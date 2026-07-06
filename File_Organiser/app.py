@@ -1,5 +1,8 @@
 import os 
 import shutil
+import time
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
 folder_path = "Downloads"
 summary = {}
@@ -49,7 +52,7 @@ for file in os.listdir(folder_path):
 
             if not os.path.exists(destination_file):
                 break
-            counter+=1;
+            counter+=1
 
     shutil.move(source_path, destination_file)
     summary[destination_folder] = summary.get(destination_folder,0)+1
